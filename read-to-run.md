@@ -1,6 +1,7 @@
 # User login
 user: admin
 pass: melody1405
+old: admin
 
 # How to build
 docker build -f Dockerfile -t secure-doc/teedy:2.0 .
@@ -54,11 +55,24 @@ documentCreatedAsyncEvent.setUserId("admin");
 documentCreatedAsyncEvent.setDocumentId(document.getId());
 ThreadLocalContext.get().addAsyncEvent(documentCreatedAsyncEvent);
 
-# Set Alternative Java
+# Update OpenJDK  17
+wget https://download.java.net/java/GA/jdk17.0.2/dfd4a8d0985749f896bed50d7138ee7f/8/GPL/openjdk-17.0.2_linux-x64_bin.tar.gz
+
+tar -xvf openjdk-17.*
+cd <directory_name>
+mkdir -p /usr/local/openjdk-17
+mv * /usr/local/openjdk-17
+
+vi .bashrc
+export JAVA_HOME=/usr/local/openjdk-17
+export PATH=$JAVA_HOME/bin:$PATH
+
+### Set Alternative Java
 update-alternatives --install "/usr/bin/java" "java" "/usr/local/openjdk-17/bin/java" 0
 update-alternatives --install "/usr/bin/javac" "javac" "/usr/local/openjdk-17/bin/javac" 0
 update-alternatives --set java /usr/local/openjdk-17/bin/java
 update-alternatives --set javac /usr/local/openjdk-17/bin/javac
 
+update-alternatives --config java
 ### AngularJs Guide
 1. route at docs/app.js (line 286)

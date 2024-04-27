@@ -95,8 +95,8 @@ public class User implements Loggable {
     @Column(name = "USE_DISABLEDATE_D")
     private Date disableDate;
 
-    @Column(name = "USE_ADDRESS_HASH", length = 255)
-    private String addressHash;
+    @Column(name = "USE_CRYPTOHASH_C", length = 255)
+    private String cryptoHash;
 
     public String getId() {
         return id;
@@ -216,12 +216,12 @@ public class User implements Loggable {
         return this;
     }
 
-    public String getAddressHash() {
-        return addressHash;
+    public String getCryptoHash() {
+        return cryptoHash;
     }
 
-    public void setAddressHash(String addressHash) {
-        this.addressHash = addressHash;
+    public void setCryptoHash(String cryptoHash) {
+        this.cryptoHash = cryptoHash;
     }
 
     @Override

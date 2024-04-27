@@ -45,7 +45,7 @@ services:
       POSTGRES_PASSWORD: "teedy_db_password"
       POSTGRES_DB: "teedy"
     volumes:
-      - ./docs/db:/var/lib/postgresql/data
+      - ${PWD}/docs/db:/var/lib/postgresql/data
     networks:
       - app-tier
 
