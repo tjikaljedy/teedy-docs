@@ -18,10 +18,4 @@ docs/*
 /*/package-lock.json
 #macos
 .DS_Store
-consensys/Dockerfile
-consensys/run-besu.sh
-/.github/
-/consensys/run-signer.sh
-consensys/keys/createKey.js
-consensys/keys/key
-consensys/keys/password
+/consensys/
