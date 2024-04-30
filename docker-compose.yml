@@ -54,7 +54,6 @@ services:
     container_name: besu
     image: hyperledger/besu:develop
     ports:
-      - 8545:8545
       - 8590:8590
       - 30303:30303
     environment:
@@ -67,7 +66,28 @@ services:
       BESU_RPC_HTTP_PORT: 8590
       BESU_DATA_PATH: "/app/data"
     volumes:
-      - ${PWD}/besu/data:/app/data
+      - ${PWD}/consensys/data:/app/data
+    networks:
+      - app-tier
+
+  ethsigner:
+    container_name: ethsigner
+    image: consensys/ethsigner:develop
+    command: [
+      "--chain-id=1337",
+      "--http-listen-host=0.0.0.0",
+      "--downstream-http-port=8545",
+      "--downstream-http-host=besu",
+      "file-based-signer",
+      "-k",
+      "/app/key",
+      "-p",
+      "/app/password"
+    ]
+    volumes:
+      - ${PWD}/consensys/keys:/app
+    ports:
+      - 8545:8545
     networks:
       - app-tier
 
