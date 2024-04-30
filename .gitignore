@@ -1,7 +1,6 @@
 /*/.classpath
 /*/.project
 /*/.settings
-/*/bin
 /*/gen
 /*/target
 /*/build
@@ -19,4 +18,3 @@ docs/*
 /*/package-lock.json
 #macos
 .DS_Store
-/besu/
