@@ -19,3 +19,4 @@ docs/*
 /*/package-lock.json
 #macos
 .DS_Store
+/besu/

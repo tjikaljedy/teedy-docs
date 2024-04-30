@@ -12,22 +12,24 @@ angular.module('docs').controller('SettingsCrypto', function($scope, User, $dial
    * Enable Crypto Wallet
    */
   $scope.enableCrypto = function () {
-    var title = $translate.instant('exts.settings.crypto.enable_crypto');
-    var msg = $translate.instant('exts.settings.crypto.enable_crypto_message');
-    var btns = [
-      { result:'cancel', label: $translate.instant('cancel') },
-      { result:'ok', label: $translate.instant('ok'), cssClass: 'btn-primary' }
-    ];
+    Web3.requestEIP6963Providers().then(function(wallets) {
+        $scope.wallets = Array.from(wallets.entries());
 
-    $dialog.messageBox(title, msg, btns, function(result) {
-      if (result === 'ok') {
-        Restangular.one('user/enable_crypto').post().then(function(data) {
-          $scope.secret = data.secret;
-          User.userInfo(true).then(function(data) {
-            $scope.user = data;
-          })
+        $uibModal.open({
+          templateUrl: 'partial/docs/exts/settings.crypto.enablecrypto.html',
+          controller: 'SettingsCryptoModalEnableCrypto',
+          scope: $scope
+        }).result.then(function (wallet) {
+         if (wallet === null) {
+            return;
+         }
+
+         const provider = wallet[1].provider;
+         provider.request({ method: 'eth_requestAccounts' }).then(function(accounts) {
+               console.log(accounts);
+
+         });
         });
-      }
     });
   };
 

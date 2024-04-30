@@ -49,6 +49,28 @@ services:
     networks:
       - app-tier
 
+# Besu
+  besu:
+    container_name: besu
+    image: hyperledger/besu:develop
+    ports:
+      - 8545:8545
+      - 8590:8590
+      - 30303:30303
+    environment:
+      BESU_RPC_HTTP_ENABLED: true
+      BESU_MINER_ENABLED: false
+      BESU_NETWORK: "dev"
+      BESU_RPC_HTTP_CORS_ORIGINS: "all"
+      BESU_HOST_ALLOWLIST: "*"
+      BESU_SYNC_MODE: "CHECKPOINT"
+      BESU_RPC_HTTP_PORT: 8590
+      BESU_DATA_PATH: "/app/data"
+    volumes:
+      - ${PWD}/besu/data:/app/data
+    networks:
+      - app-tier
+
 networks:
   app-tier:
     driver: bridge

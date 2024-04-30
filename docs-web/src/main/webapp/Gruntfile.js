@@ -106,7 +106,7 @@ module.exports = function(grunt) {
       dist: {
         expand: true,
         cwd: 'src/',
-        src: ['**', '!**/*.js', '!*.html', '!**/*.less', '!**/*.css', 'locale/**'],
+        src: ['**', '!**/*.js', '!*.html', '!**/*.less', '!**/*.css', 'locale/**','lib/web3.min.js'],
         dest: 'dist/'
       }
     },

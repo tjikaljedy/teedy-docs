@@ -528,7 +528,7 @@ RestangularProvider, $translateProvider, timeAgoSettings, tmhDynamicLocaleProvid
 /**
  * Application initialization.
  */
-  .run(function($rootScope, $state, $stateParams, Restangular) {
+  .run(function($window, $rootScope, $state, $stateParams, Restangular) {
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 

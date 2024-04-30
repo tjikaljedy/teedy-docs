@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <h3>{{ 'exts.settings.crypto.enable_crypto' | translate }}</h3>
+</div>
+<div class="modal-body">
+  <p translate="exts.settings.crypto.enable_crypto.message"></p>
+  <table class="row table-wallet table-hover">
+    <tbody>
+    <tr ng-click="onSelect(wallet)" ng-repeat="wallet in wallets">
+    <td>
+      <div class="thumbnail-list">
+        <img ng-src="{{ wallet[1].info.icon }}" />
+        {{wallet[1].info.name}}
+      </div>
+    </td>
+    </tr>
+    </tbody>
+
+  </table>
+
+</div>
+<div class="modal-footer">
+  <button ng-click="close(null)" class="btn btn-default">{{ 'cancel' | translate }}</button>
+</div>

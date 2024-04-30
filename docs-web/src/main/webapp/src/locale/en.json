@@ -634,7 +634,10 @@
     "settings" : {
       "menu_crypto" : "Crypto Wallet authentication",
       "crypto" : {
-        "enable_crypto" : "Enable Crypto Wallet authentication",
+        "enable_crypto" : {
+          "enable_crypto" : "Connect Available Wallets",
+          "message" : "Connecting your wallet is like “logging in” to Web3. Select your wallet from the options to get started."
+        },
         "enable_crypto_message" : "Make sure you have a Crypto Wallet application on your phone ready to add a new account",
         "title" : "Crypto Wallet authentication",
         "message_1" : "A crypto wallet to ensure your documents are safe and authentic",

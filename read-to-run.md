@@ -5,6 +5,7 @@ old: admin
 
 # How to build
 docker build -f Dockerfile -t secure-doc/teedy:2.0 .
+docker build -f Dockerfile -t secure-doc/besu:2.0 .
 
 Teedy is organized in several Maven modules:
 
