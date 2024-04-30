@@ -18,3 +18,5 @@ docs/*
 /*/package-lock.json
 #macos
 .DS_Store
+consensys/Dockerfile
+consensys/run-besu.sh
