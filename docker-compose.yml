@@ -70,26 +70,22 @@ services:
     networks:
       - app-tier
 
-  ethsigner:
-    container_name: ethsigner
-    image: consensys/ethsigner:develop
+  web3signer:
+    container_name: web3signer
+    image: consensys/web3signer:develop
     command: [
-      "--chain-id=1337",
+      "--config-file=/app/config/config-eth1.yaml",
       "--http-listen-host=0.0.0.0",
-      "--downstream-http-port=8545",
-      "--downstream-http-host=besu",
-      "file-based-signer",
-      "-k",
-      "/app/key",
-      "-p",
-      "/app/password"
+      "eth1"
     ]
     volumes:
-      - ${PWD}/consensys/keys:/app
+      - ${PWD}/consensys/config:/app/config
+      - ${PWD}/consensys/store-data:/app/store-data
     ports:
-      - 8545:8545
+      - 9000:9000
     networks:
       - app-tier
+
 
 networks:
   app-tier:

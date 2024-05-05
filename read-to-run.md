@@ -77,3 +77,32 @@ update-alternatives --set javac /usr/local/openjdk-17/bin/javac
 update-alternatives --config java
 ### AngularJs Guide
 1. route at docs/app.js (line 286)
+
+### How to use web3signer
+1. Configuration need to seperate between eth1 and eth2
+2. Under eth1 allowed to connect with devnet
+
+
+### Old Compose for ethsigner
+```
+  ethsigner:
+    container_name: ethsigner
+    image: consensys/ethsigner:develop
+    command: [
+      "--chain-id=1337",
+      "--http-listen-host=0.0.0.0",
+      "--downstream-http-port=8545",
+      "--downstream-http-host=besu",
+      "file-based-signer",
+      "-k",
+      "/app/key",
+      "-p",
+      "/app/password"
+    ]
+    volumes:
+      - ${PWD}/consensys/keys:/app
+    ports:
+      - 8545:8545
+    networks:
+      - app-tier
+```
